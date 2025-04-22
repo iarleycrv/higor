@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Higor iPhones</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -16,7 +16,7 @@
     header {
       background-color: #000;
       color: #fff;
-      padding: 10px;
+      padding: 15px;
       text-align: center;
       font-size: 24px;
     }
@@ -30,14 +30,6 @@
       font-weight: 600;
     }
 
-    select, input, button {
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 10px;
-      width: 80%;
-      max-width: 400px;
-    }
-
     .step {
       display: none;
       margin-bottom: 30px;
@@ -45,6 +37,44 @@
 
     .step.active {
       display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-icon {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .custom-select, .custom-input {
+      width: 80%;
+      max-width: 400px;
+      padding: 12px 16px;
+      border: 2px solid #000;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      font-size: 16px;
+      margin: 10px auto;
+      appearance: none;
+    }
+
+    .custom-button {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .custom-button:hover {
+      background-color: #444;
     }
 
     .buttons {
@@ -60,6 +90,7 @@
       bottom: 20px;
       right: 20px;
       width: 60px;
+      z-index: 999;
     }
 
     footer {
@@ -86,13 +117,14 @@
 
   <section>
     <h1>Compre seu iPhone passo a passo</h1>
-    <p>Responda cada etapa abaixo para finalizar sua compra com a gente!</p>
+    <p>Preencha as etapas abaixo para finalizar sua compra!</p>
   </section>
 
   <!-- Passo 1 -->
   <section id="step-1" class="step active">
+    <img src="https://img.icons8.com/ios-filled/100/000000/iphone.png" class="step-icon" alt="iPhone" />
     <h2>Passo 1: Escolha o modelo</h2>
-    <select id="modelo">
+    <select id="modelo" class="custom-select">
       <option>iPhone 8 Plus</option>
       <option>iPhone X</option>
       <option>iPhone XR</option>
@@ -104,47 +136,50 @@
       <option>iPhone 15 Pro Max</option>
     </select>
     <div class="buttons">
-      <button onclick="nextStep()">Próximo</button>
+      <button class="custom-button" onclick="nextStep()">Próximo</button>
     </div>
   </section>
 
   <!-- Passo 2 -->
   <section id="step-2" class="step">
+    <img src="https://img.icons8.com/ios-filled/100/000000/money.png" class="step-icon" alt="Pagamento" />
     <h2>Passo 2: Forma de pagamento</h2>
-    <select id="pagamento">
+    <select id="pagamento" class="custom-select">
       <option>Pix</option>
       <option>Cartão</option>
       <option>Boleto</option>
     </select>
     <div class="buttons">
-      <button onclick="prevStep()">Voltar</button>
-      <button onclick="nextStep()">Próximo</button>
+      <button class="custom-button" onclick="prevStep()">Voltar</button>
+      <button class="custom-button" onclick="nextStep()">Próximo</button>
     </div>
   </section>
 
   <!-- Passo 3 -->
   <section id="step-3" class="step">
+    <img src="https://img.icons8.com/ios-filled/100/000000/delivery.png" class="step-icon" alt="Entrega" />
     <h2>Passo 3: Entrega ou Loja</h2>
-    <select id="entrega" onchange="mostrarEndereco()">
+    <select id="entrega" class="custom-select" onchange="mostrarEndereco()">
       <option value="Recolher na loja">Recolher na loja</option>
       <option value="Entrega">Entrega</option>
     </select>
     <div id="campo-endereco" style="margin-top: 15px; display: none;">
-      <input type="text" id="endereco" placeholder="Digite seu endereço completo">
+      <input type="text" id="endereco" class="custom-input" placeholder="Digite seu endereço completo" />
     </div>
     <div class="buttons">
-      <button onclick="prevStep()">Voltar</button>
-      <button onclick="nextStep()">Próximo</button>
+      <button class="custom-button" onclick="prevStep()">Voltar</button>
+      <button class="custom-button" onclick="nextStep()">Próximo</button>
     </div>
   </section>
 
   <!-- Passo 4 -->
   <section id="step-4" class="step">
+    <img src="https://img.icons8.com/ios-filled/100/000000/checked--v1.png" class="step-icon" alt="Finalizar" />
     <h2>Passo 4: Finalizar Compra</h2>
     <p>Revise suas escolhas e clique abaixo para ser atendido no WhatsApp.</p>
-    <button onclick="enviarWhatsApp()">Comprar</button>
+    <button class="custom-button" onclick="enviarWhatsApp()">Comprar</button>
     <div class="buttons">
-      <button onclick="prevStep()">Voltar</button>
+      <button class="custom-button" onclick="prevStep()">Voltar</button>
     </div>
   </section>
 
@@ -159,7 +194,7 @@
   </footer>
 
   <a href="https://wa.me/5575983467307" target="_blank">
-    <img class="whatsapp" src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp">
+    <img class="whatsapp" src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp" />
   </a>
 
   <script>
