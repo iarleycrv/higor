@@ -41,17 +41,21 @@
 
     .logo h1 {
       font-weight: 700;
-      font-size: 24px;
+      font-size: 28px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .logo p {
       font-weight: 400;
-      font-size: 14px;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .logo img {
-      width: 20px;
-      margin-top: 5px;
+      width: 35px;
+      margin: 0 10px;
     }
 
     nav {
@@ -181,19 +185,76 @@
       font-size: 16px;
     }
 
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      background: #000;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 14px;
+      padding: 10px 0;
+    }
+
+    .menu a {
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu.active {
+      display: block;
+    }
+
+    .menu.active a {
+      display: block;
+      margin: 10px 0;
+    }
+
+    /* Styling adjustments for mobile */
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .logo h1,
+      .logo p {
+        font-size: 20px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo">
-      <h1>Higor</h1>
-      <p>iPhones</p>
+      <h1>HIGOR</h1>
+      <p>IPHONES</p>
       <img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png" alt="Apple">
     </div>
   </header>
 
-  <nav>
+  <button class="menu-toggle">Menu</button>
+
+  <nav class="menu">
     <a href="#inicio">Início</a>
     <a href="#comprar">Comprar</a>
     <a href="#passos">Como Funciona</a>
@@ -268,74 +329,59 @@
         <p>Informe seus dados e selecione a forma de pagamento.</p>
       </div>
       <div class="passo">
-        <img src="https://img.icons8.com/ios-filled/100/000000/delivery.png" alt="Passo 3" />
-        <p>Receba seu iPhone com rapidez ou retire na loja.</p>
+        <img src="https://img.icons8.com/ios-filled/100/000000/package.png" alt="Passo 3" />
+        <p>Receba em casa ou retire na loja.</p>
       </div>
     </div>
   </section>
 
   <section id="garantia">
     <h2>Garantia</h2>
-    <div class="garantia">
-      <p>Todos os iPhones vendidos pela Higor iPhones possuem garantia de 1 ano, válida para defeitos de fabricação. A garantia cobre reparos em peças e serviços relacionados à falhas internas e externas não causadas por mau uso. O prazo de garantia começa a contar a partir da data de compra e é válida para o proprietário original do produto.</p>
-    </div>
+    <p>Todos os iPhones vendidos possuem garantia de 12 meses. Caso haja algum problema, o reembolso ou troca será realizado conforme as condições de nossa política.</p>
   </section>
 
-  <section id="faq">
-    <h2>FAQ - Perguntas Frequentes</h2>
-    <div class="faq">
-      <div class="faq-item">
-        <p><strong>1. Como posso saber o valor do iPhone?</strong></p>
-        <p>O valor é consultado diretamente pelo WhatsApp, onde você pode obter a cotação e tirar todas as suas dúvidas.</p>
-      </div>
-      <div class="faq-item">
-        <p><strong>2. Posso pagar parcelado?</strong></p>
-        <p>Sim! Aceitamos pagamento via cartão de crédito, boleto ou Pix.</p>
-      </div>
-      <div class="faq-item">
-        <p><strong>3. Qual é o prazo de entrega?</strong></p>
-        <p>O prazo de entrega depende da sua localidade, mas garantimos um processo rápido e seguro.</p>
-      </div>
-      <div class="faq-item">
-        <p><strong>4. Como faço para retirar na loja?</strong></p>
-        <p>Escolha a opção "Recolha na Loja" ao realizar a compra. Você receberá as instruções para a retirada.</p>
-      </div>
+  <section id="faq" class="faq">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <p>Qual a forma de pagamento?</p>
+      <p>Você pode pagar via Pix, Cartão ou Boleto.</p>
+    </div>
+    <div class="faq-item">
+      <p>Os aparelhos são novos?</p>
+      <p>Sim, todos os iPhones são novos e possuem garantia de fábrica.</p>
     </div>
   </section>
 
   <section id="contato">
-    <h2>Contato</h2>
+    <h2>Contate-nos</h2>
     <p>Instagram | WhatsApp | Email</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Higor iPhones. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Higor iPhones - Todos os direitos reservados.</p>
   </footer>
 
-  <a href="https://wa.me/5575983467307" target="_blank">
-    <img class="whatsapp" src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp" />
+  <a class="whatsapp" href="https://wa.me/SEUNUMERO" target="_blank">
+    <img src="https://img.icons8.com/ios-filled/100/ffffff/whatsapp.png" alt="WhatsApp" />
   </a>
 
   <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+
     function enviarWhatsApp() {
       const modelo = document.getElementById('modelo').value;
       const pagamento = document.getElementById('pagamento').value;
       const entrega = document.getElementById('entrega').value;
       const endereco = document.getElementById('endereco').value;
 
-      let mensagem = `Olá! Tenho interesse no *${modelo}*.%0A`;
-      mensagem += `Forma de pagamento: *${pagamento}*%0A`;
-      mensagem += `Opção de entrega: *${entrega}*%0A`;
-
-      if (entrega === 'Entrega' && endereco.trim() !== '') {
-        mensagem += `Endereço para entrega: ${endereco}%0A`;
-      }
-
-      const numero = '5575983467307';
-      const url = `https://wa.me/${numero}?text=${mensagem}`;
-      window.open(url, '_blank');
+      const mensagem = `Olá, gostaria de comprar o ${modelo}. Forma de pagamento: ${pagamento}. Tipo de entrega: ${entrega}. Endereço: ${endereco}`;
+      window.location.href = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(mensagem)}`;
     }
   </script>
-
 </body>
 </html>
