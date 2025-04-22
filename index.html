@@ -4,12 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Higor iPhones</title>
-
-  <!-- Importando a fonte Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
-    /* Aplicando a fonte Poppins */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -32,16 +28,19 @@
 
     h1, h2 {
       color: #000;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600; /* Peso mais forte para títulos */
+      font-weight: 600;
     }
 
-    select, button {
+    select, input, button {
       padding: 10px;
       font-size: 16px;
       margin-top: 10px;
       width: 80%;
       max-width: 400px;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .passos {
@@ -80,7 +79,8 @@
   </section>
 
   <section>
-    <h2>Comece agora a compra do seu iPhone!</h2>
+    <h2>Faça seu pedido</h2>
+
     <label for="modelo">Modelo:</label><br>
     <select id="modelo">
       <option>iPhone 8 Plus</option>
@@ -102,32 +102,58 @@
       <option>iPhone 15</option>
       <option>iPhone 15 Pro</option>
       <option>iPhone 15 Pro Max</option>
-    </select>
+    </select><br>
+
+    <label for="pagamento">Forma de Pagamento:</label><br>
+    <select id="pagamento">
+      <option>Pix</option>
+      <option>Cartão</option>
+      <option>Boleto</option>
+    </select><br>
+
+    <label for="entrega">Entrega ou Recolha na Loja:</label><br>
+    <select id="entrega" onchange="mostrarEndereco()">
+      <option value="Recolher na loja">Recolher na loja</option>
+      <option value="Entrega">Entrega</option>
+    </select><br>
+
+    <div id="campo-endereco" class="hidden">
+      <label for="endereco">Endereço de Entrega:</label><br>
+      <input type="text" id="endereco" placeholder="Rua, número, bairro, cidade">
+    </div>
+
+    <br>
+    <button onclick="enviarWhatsApp()">Comprar</button>
   </section>
 
-  <section class="passos">
-    <h2>Como funciona a compra na Higor iPhones:</h2>
+  <script>
+    function mostrarEndereco() {
+      const entrega = document.getElementById('entrega').value;
+      const campoEndereco = document.getElementById('campo-endereco');
+      campoEndereco.classList.toggle('hidden', entrega !== 'Entrega');
+    }
 
-    <div class="passo">
-      <img src="https://img.icons8.com/ios-filled/100/000000/iphone.png" alt="iPhone">
-      <h3>Passo 1</h3>
-      <p>Escolha o modelo e condição do iPhone desejado para verificar a disponibilidade e o valor.</p>
-    </div>
+    function enviarWhatsApp() {
+      const modelo = document.getElementById('modelo').value;
+      const pagamento = document.getElementById('pagamento').value;
+      const entrega = document.getElementById('entrega').value;
+      const endereco = document.getElementById('endereco').value;
 
-    <div class="passo">
-      <img src="https://img.icons8.com/ios-filled/100/000000/money.png" alt="Pagamento">
-      <h3>Passo 2</h3>
-      <p>Complete seus dados e selecione a forma de pagamento desejada.</p>
-    </div>
+      let mensagem = `Olá, estou interessado no *${modelo}*%0A`;
+      mensagem += `Quero pagar com *${pagamento}*%0A`;
+      mensagem += `Forma de recebimento: *${entrega}*%0A`;
 
-    <div class="passo">
-      <img src="https://img.icons8.com/ios-filled/100/000000/delivery.png" alt="Entrega">
-      <h3>Passo 3</h3>
-      <p>Receba seu iPhone com rapidez e segurança em sua casa.</p>
-    </div>
-  </section>
+      if (entrega === 'Entrega') {
+        mensagem += `Endereço para entrega: *${endereco}*%0A`;
+      }
 
-  <a href="https://wa.me/seunumeroaqui" target="_blank">
+      const numero = '5575983467307';
+      const url = `https://wa.me/${numero}?text=${mensagem}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+  <a href="https://wa.me/5575983467307" target="_blank">
     <img class="whatsapp" src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp">
   </a>
 </body>
