@@ -3,148 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Higor iPhones</title>
+  <title>HIGOR iPhones</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
     body {
+      margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #111;
-      line-height: 1.5;
+      background-color: #fff;
+      color: #000;
+    }
+
+    /* Menu hambúrguer */
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-btn div {
+      width: 25px;
+      height: 3px;
+      background-color: #000;
     }
 
     header {
-      background: #000;
+      background-color: #000;
       color: #fff;
+      padding: 40px 20px 20px;
       text-align: center;
-      padding: 15px 10px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
     .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      line-height: 1.1;
+      line-height: 1.2;
     }
 
     .logo h1 {
-      font-weight: 700;
+      margin: 0;
       font-size: 28px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      font-weight: bold;
     }
 
-    .logo p {
-      font-weight: 400;
-      font-size: 20px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .logo img {
-      width: 35px;
-      margin: 0 10px;
-    }
-
-    nav {
-      background: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      font-size: 14px;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: #111;
-      text-decoration: none;
-      font-weight: 500;
+    .logo span {
+      display: block;
+      font-size: 16px;
+      font-weight: normal;
     }
 
     section {
-      padding: 30px 20px;
-      max-width: 800px;
-      margin: auto;
+      padding: 20px;
       text-align: center;
     }
 
     h2 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
-    p {
-      font-size: 15px;
-      color: #444;
-    }
-
-    select, input, button {
+    select, button {
+      padding: 12px;
+      font-size: 16px;
       margin-top: 10px;
-      padding: 12px 14px;
       width: 90%;
       max-width: 400px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      transition: 0.3s;
-      appearance: none;
-    }
-
-    select {
-      background: #fdfdfd url('https://img.icons8.com/ios-glyphs/30/000000/expand-arrow.png') no-repeat right 12px center;
-      background-size: 12px;
+      border: 2px solid #000;
+      border-radius: 6px;
+      background-color: #f4f4f4;
     }
 
     button {
-      background: #000;
+      background-color: #000;
       color: #fff;
-      font-weight: 500;
-      border: none;
       cursor: pointer;
-    }
-
-    button:hover {
-      background: #222;
     }
 
     .passos {
       display: flex;
       flex-direction: column;
       gap: 30px;
-      padding-top: 20px;
-    }
-
-    .passo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 20px;
     }
 
     .passo img {
-      width: 50px;
+      width: 60px;
       margin-bottom: 10px;
-    }
-
-    footer {
-      background: #f5f5f5;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #555;
     }
 
     .whatsapp {
@@ -155,233 +101,170 @@
       z-index: 1000;
     }
 
-    a {
+    .contato a {
+      margin: 0 10px;
       text-decoration: none;
-      color: inherit;
+      color: #000;
+      font-weight: bold;
     }
 
-    .faq {
-      text-align: left;
-      margin-top: 20px;
-      max-width: 800px;
-      margin: auto;
+    footer {
+      text-align: center;
+      font-size: 14px;
+      padding: 20px;
+      background: #f4f4f4;
     }
 
     .faq-item {
-      margin-bottom: 15px;
-      font-size: 16px;
-      font-weight: 600;
+      margin-bottom: 20px;
     }
 
-    .faq-item p {
-      font-size: 14px;
-      color: #444;
-    }
-
-    .garantia {
-      text-align: left;
-      max-width: 800px;
-      margin: auto;
-      font-size: 16px;
-    }
-
-    /* Mobile Menu */
-    .menu-toggle {
-      display: none;
-      background: #000;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .menu {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      font-size: 14px;
-      padding: 10px 0;
-    }
-
-    .menu a {
-      color: #111;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .menu.active {
-      display: block;
-    }
-
-    .menu.active a {
-      display: block;
-      margin: 10px 0;
-    }
-
-    /* Styling adjustments for mobile */
-    @media (max-width: 768px) {
-      .menu {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .logo {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .logo h1,
-      .logo p {
-        font-size: 20px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
+    .faq-item h4 {
+      margin-bottom: 5px;
     }
   </style>
 </head>
 <body>
 
+  <div class="menu-btn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
   <header>
     <div class="logo">
       <h1>HIGOR</h1>
-      <p>IPHONES</p>
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png" alt="Apple">
+      <span>IPHONES</span>
     </div>
   </header>
 
-  <button class="menu-toggle">Menu</button>
-
-  <nav class="menu">
-    <a href="#inicio">Início</a>
-    <a href="#comprar">Comprar</a>
-    <a href="#passos">Como Funciona</a>
-    <a href="#garantia">Garantia</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contato">Contato</a>
-  </nav>
-
-  <section id="inicio">
+  <section style="background-color: #f4f4f4;">
     <h2>Compre seu iPhone sem sair de casa</h2>
-    <p>Escolha o modelo, consulte o valor pelo WhatsApp e receba com rapidez e segurança.</p>
+    <p>Escolha o modelo e receba em casa com segurança.</p>
   </section>
 
-  <section id="comprar">
-    <h2>Inicie sua compra</h2>
+  <section>
+    <h2>Iniciar Compra</h2>
     <select id="modelo">
-      <option>iPhone 7</option>
-      <option>iPhone 7 Plus</option>
-      <option>iPhone 8</option>
-      <option>iPhone 8 Plus</option>
-      <option>iPhone X</option>
-      <option>iPhone XR</option>
-      <option>iPhone XS</option>
-      <option>iPhone XS Max</option>
+      <option disabled selected>Escolha o modelo</option>
       <option>iPhone 11</option>
       <option>iPhone 11 Pro</option>
-      <option>iPhone 11 Pro Max</option>
-      <option>iPhone SE (2ª geração)</option>
       <option>iPhone 12</option>
-      <option>iPhone 12 Mini</option>
       <option>iPhone 12 Pro</option>
-      <option>iPhone 12 Pro Max</option>
       <option>iPhone 13</option>
-      <option>iPhone 13 Mini</option>
-      <option>iPhone 13 Pro</option>
       <option>iPhone 13 Pro Max</option>
       <option>iPhone 14</option>
-      <option>iPhone 14 Plus</option>
       <option>iPhone 14 Pro</option>
-      <option>iPhone 14 Pro Max</option>
       <option>iPhone 15</option>
-      <option>iPhone 15 Plus</option>
-      <option>iPhone 15 Pro</option>
       <option>iPhone 15 Pro Max</option>
-    </select><br>
+    </select><br/>
+
+    <select id="condicao">
+      <option disabled selected>Condição</option>
+      <option>Novo</option>
+      <option>Seminovo</option>
+    </select><br/>
 
     <select id="pagamento">
+      <option disabled selected>Forma de pagamento</option>
       <option>Pix</option>
       <option>Cartão</option>
       <option>Boleto</option>
-    </select><br>
+    </select><br/>
 
     <select id="entrega">
+      <option disabled selected>Entrega ou Loja</option>
       <option>Entrega</option>
-      <option>Recolha na Loja</option>
-    </select><br>
+      <option>Retirada na Loja</option>
+    </select><br/>
 
-    <input type="text" id="endereco" placeholder="Endereço (se entrega)" /><br>
+    <input type="text" id="endereco" placeholder="Endereço (se entrega)" style="display:none; margin-top:10px; width:90%; max-width:400px; padding:10px;"/><br/>
 
-    <button onclick="enviarWhatsApp()">Comprar pelo WhatsApp</button>
+    <button onclick="enviarWhatsapp()">Comprar</button>
   </section>
 
-  <section id="passos">
-    <h2>Como funciona a compra</h2>
-    <div class="passos">
-      <div class="passo">
-        <img src="https://img.icons8.com/ios-filled/100/000000/iphone.png" alt="Passo 1" />
-        <p>Escolha o modelo e veja o valor pelo WhatsApp.</p>
-      </div>
-      <div class="passo">
-        <img src="https://img.icons8.com/ios-filled/100/000000/money.png" alt="Passo 2" />
-        <p>Informe seus dados e selecione a forma de pagamento.</p>
-      </div>
-      <div class="passo">
-        <img src="https://img.icons8.com/ios-filled/100/000000/package.png" alt="Passo 3" />
-        <p>Receba em casa ou retire na loja.</p>
-      </div>
+  <section class="passos">
+    <h2>Como funciona:</h2>
+    <div class="passo">
+      <img src="https://img.icons8.com/ios-filled/100/000000/iphone.png" alt="iPhone">
+      <h3>1. Escolha</h3>
+      <p>Escolha o modelo e condição desejada.</p>
+    </div>
+    <div class="passo">
+      <img src="https://img.icons8.com/ios-filled/100/000000/money.png" alt="Pagamento">
+      <h3>2. Pagamento</h3>
+      <p>Escolha a forma de pagamento e confirme o pedido.</p>
+    </div>
+    <div class="passo">
+      <img src="https://img.icons8.com/ios-filled/100/000000/delivery.png" alt="Entrega">
+      <h3>3. Entrega</h3>
+      <p>Receba em casa ou retire na loja com segurança.</p>
     </div>
   </section>
 
-  <section id="garantia">
+  <section>
     <h2>Garantia</h2>
-    <p>Todos os iPhones vendidos possuem garantia de 12 meses. Caso haja algum problema, o reembolso ou troca será realizado conforme as condições de nossa política.</p>
+    <p>Todos os nossos iPhones possuem garantia:</p>
+    <p><strong>Novos:</strong> 1 ano de garantia</p>
+    <p><strong>Seminovos:</strong> 3 meses de garantia</p>
   </section>
 
-  <section id="faq" class="faq">
-    <h2>FAQ</h2>
+  <section>
+    <h2>FAQ - Perguntas Frequentes</h2>
     <div class="faq-item">
-      <p>Qual a forma de pagamento?</p>
-      <p>Você pode pagar via Pix, Cartão ou Boleto.</p>
+      <h4>Vocês vendem apenas iPhones novos?</h4>
+      <p>Não! Trabalhamos com iPhones novos e seminovos, todos testados e com garantia.</p>
     </div>
     <div class="faq-item">
-      <p>Os aparelhos são novos?</p>
-      <p>Sim, todos os iPhones são novos e possuem garantia de fábrica.</p>
+      <h4>Qual o tempo de entrega?</h4>
+      <p>Em média de 1 a 3 dias úteis após a confirmação do pagamento.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Posso pagar no cartão?</h4>
+      <p>Sim! Aceitamos Pix, Cartão de Crédito e Boleto.</p>
     </div>
   </section>
 
-  <section id="contato">
-    <h2>Contate-nos</h2>
-    <p>Instagram | WhatsApp | Email</p>
+  <section class="contato">
+    <h2>Contato</h2>
+    <a href="https://instagram.com/higor_iphone" target="_blank">Instagram</a> |
+    <a href="https://wa.me/5575983467307" target="_blank">Whatsapp</a> |
+    <a href="mailto:Higoroficialsilva01@gmail.com">Email</a>
   </section>
 
   <footer>
-    <p>&copy; 2025 Higor iPhones - Todos os direitos reservados.</p>
+    &copy; 2025 HIGOR iPhones. Todos os direitos reservados.
   </footer>
 
-  <a class="whatsapp" href="https://wa.me/SEUNUMERO" target="_blank">
-    <img src="https://img.icons8.com/ios-filled/100/ffffff/whatsapp.png" alt="WhatsApp" />
-  </a>
-
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.menu');
+    const entrega = document.getElementById("entrega");
+    const endereco = document.getElementById("endereco");
 
-    menuToggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
+    entrega.addEventListener("change", () => {
+      endereco.style.display = entrega.value === "Entrega" ? "block" : "none";
     });
 
-    function enviarWhatsApp() {
-      const modelo = document.getElementById('modelo').value;
-      const pagamento = document.getElementById('pagamento').value;
-      const entrega = document.getElementById('entrega').value;
-      const endereco = document.getElementById('endereco').value;
+    function enviarWhatsapp() {
+      const modelo = document.getElementById("modelo").value;
+      const condicao = document.getElementById("condicao").value;
+      const pagamento = document.getElementById("pagamento").value;
+      const tipoEntrega = entrega.value;
+      const enderecoValor = endereco.value;
 
-      const mensagem = `Olá, gostaria de comprar o ${modelo}. Forma de pagamento: ${pagamento}. Tipo de entrega: ${entrega}. Endereço: ${endereco}`;
-      window.location.href = `https://wa.me/SEUNUMERO?text=${encodeURIComponent(mensagem)}`;
+      let mensagem = `Olá! Tenho interesse no *${modelo}* (${condicao})\n`;
+      mensagem += `Forma de pagamento: *${pagamento}*\n`;
+      mensagem += `Entrega: *${tipoEntrega}*`;
+
+      if (tipoEntrega === "Entrega") {
+        mensagem += `\nEndereço: ${enderecoValor}`;
+      }
+
+      const numero = "5575983467307";
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, "_blank");
     }
   </script>
+
 </body>
 </html>
