@@ -9,8 +9,8 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #000000;
+      background-color: #fff;
+      color: #000;
     }
 
     header {
@@ -27,7 +27,6 @@
     }
 
     h1, h2 {
-      color: #000;
       font-weight: 600;
     }
 
@@ -39,25 +38,21 @@
       max-width: 400px;
     }
 
-    .hidden {
+    .step {
       display: none;
+      margin-bottom: 30px;
     }
 
-    .passos {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      padding: 20px;
+    .step.active {
+      display: block;
     }
 
-    .passo {
-      border-top: 1px solid #ccc;
-      padding-top: 20px;
+    .buttons {
+      margin-top: 20px;
     }
 
-    .passo img {
-      width: 60px;
-      margin-bottom: 10px;
+    .buttons button {
+      margin: 5px;
     }
 
     .whatsapp {
@@ -87,110 +82,112 @@
 </head>
 <body>
 
-  <header>
-    Higor iPhones
-  </header>
-
-  <section style="background-color: #f4f4f4;">
-    <h1>Compre seu iPhone sem sair de casa</h1>
-    <p>Escolha o modelo desejado e descubra as ofertas disponíveis. Entrega rápida e segura direto na sua casa.</p>
-  </section>
+  <header>Higor iPhones</header>
 
   <section>
-    <h2>Faça seu pedido</h2>
+    <h1>Compre seu iPhone passo a passo</h1>
+    <p>Responda cada etapa abaixo para finalizar sua compra com a gente!</p>
+  </section>
 
-    <label for="modelo">Modelo:</label><br>
+  <!-- Passo 1 -->
+  <section id="step-1" class="step active">
+    <h2>Passo 1: Escolha o modelo</h2>
     <select id="modelo">
       <option>iPhone 8 Plus</option>
       <option>iPhone X</option>
-      <option>iPhone XS</option>
       <option>iPhone XR</option>
       <option>iPhone 11</option>
-      <option>iPhone 11 Pro</option>
-      <option>iPhone 11 Pro Max</option>
       <option>iPhone 12</option>
-      <option>iPhone 12 Pro</option>
-      <option>iPhone 12 Pro Max</option>
       <option>iPhone 13</option>
-      <option>iPhone 13 Pro</option>
-      <option>iPhone 13 Pro Max</option>
       <option>iPhone 14</option>
-      <option>iPhone 14 Pro</option>
-      <option>iPhone 14 Pro Max</option>
       <option>iPhone 15</option>
-      <option>iPhone 15 Pro</option>
       <option>iPhone 15 Pro Max</option>
-    </select><br>
+    </select>
+    <div class="buttons">
+      <button onclick="nextStep()">Próximo</button>
+    </div>
+  </section>
 
-    <label for="pagamento">Forma de Pagamento:</label><br>
+  <!-- Passo 2 -->
+  <section id="step-2" class="step">
+    <h2>Passo 2: Forma de pagamento</h2>
     <select id="pagamento">
       <option>Pix</option>
       <option>Cartão</option>
       <option>Boleto</option>
-    </select><br>
+    </select>
+    <div class="buttons">
+      <button onclick="prevStep()">Voltar</button>
+      <button onclick="nextStep()">Próximo</button>
+    </div>
+  </section>
 
-    <label for="entrega">Entrega ou Recolha na Loja:</label><br>
+  <!-- Passo 3 -->
+  <section id="step-3" class="step">
+    <h2>Passo 3: Entrega ou Loja</h2>
     <select id="entrega" onchange="mostrarEndereco()">
       <option value="Recolher na loja">Recolher na loja</option>
       <option value="Entrega">Entrega</option>
-    </select><br>
-
-    <div id="campo-endereco" class="hidden">
-      <label for="endereco">Endereço de Entrega:</label><br>
-      <input type="text" id="endereco" placeholder="Rua, número, bairro, cidade">
+    </select>
+    <div id="campo-endereco" style="margin-top: 15px; display: none;">
+      <input type="text" id="endereco" placeholder="Digite seu endereço completo">
     </div>
+    <div class="buttons">
+      <button onclick="prevStep()">Voltar</button>
+      <button onclick="nextStep()">Próximo</button>
+    </div>
+  </section>
 
-    <br>
+  <!-- Passo 4 -->
+  <section id="step-4" class="step">
+    <h2>Passo 4: Finalizar Compra</h2>
+    <p>Revise suas escolhas e clique abaixo para ser atendido no WhatsApp.</p>
     <button onclick="enviarWhatsApp()">Comprar</button>
-  </section>
-
-  <section class="passos">
-    <h2>Como funciona a compra na Higor iPhones:</h2>
-
-    <div class="passo">
-      <img src="https://img.icons8.com/ios-filled/100/000000/iphone.png" alt="iPhone">
-      <h3>Passo 1</h3>
-      <p>Escolha o modelo e condição do iPhone desejado para verificar a disponibilidade e o valor.</p>
-    </div>
-
-    <div class="passo">
-      <img src="https://img.icons8.com/ios-filled/100/000000/money.png" alt="Pagamento">
-      <h3>Passo 2</h3>
-      <p>Complete seus dados e selecione a forma de pagamento desejada.</p>
-    </div>
-
-    <div class="passo">
-      <img src="https://img.icons8.com/ios-filled/100/000000/delivery.png" alt="Entrega">
-      <h3>Passo 3</h3>
-      <p>Receba seu iPhone com rapidez e segurança em sua casa.</p>
+    <div class="buttons">
+      <button onclick="prevStep()">Voltar</button>
     </div>
   </section>
 
-  <section style="background-color: #f4f4f4;">
-    <h2>Sobre a Higor iPhones</h2>
-    <p>Atuamos no mercado oferecendo iPhones com procedência, qualidade e confiança. Nosso compromisso é com sua satisfação, entregando produtos testados, com garantia e atendimento personalizado.</p>
-  </section>
-
-  <section>
-    <h2>Dúvidas Frequentes</h2>
-    <p><strong>Os iPhones são novos?</strong><br>Trabalhamos com iPhones novos e seminovos em excelente estado, todos com garantia.</p>
-    <p><strong>Os produtos têm garantia?</strong><br>Sim, todos os nossos aparelhos possuem garantia mínima de 3 meses.</p>
-    <p><strong>Fazem entrega para todo o Brasil?</strong><br>Sim! Enviamos para todo o país com segurança e rastreamento.</p>
-    <p><strong>Posso parcelar no cartão?</strong><br>Sim, aceitamos pagamento via cartão com parcelamento.</p>
-  </section>
-
+  <!-- Rodapé minimalista -->
   <footer>
-    <p><a href="https://instagram.com/higor_iphone" target="_blank">@higor_iphone</a> | 
-    <a href="https://wa.me/5575983467307" target="_blank">WhatsApp</a> | 
-    <a href="mailto:Higoroficialsilva01@gmail.com">Email</a></p>
+    <p>
+      <a href="https://instagram.com/higor_iphone" target="_blank">@higor_iphone</a> |
+      <a href="https://wa.me/5575983467307" target="_blank">WhatsApp</a> |
+      <a href="mailto:Higoroficialsilva01@gmail.com">Email</a>
+    </p>
     <p>&copy; 2025 Higor iPhones</p>
   </footer>
 
+  <a href="https://wa.me/5575983467307" target="_blank">
+    <img class="whatsapp" src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp">
+  </a>
+
   <script>
+    let currentStep = 1;
+
+    function showStep(step) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.getElementById(`step-${step}`).classList.add('active');
+    }
+
+    function nextStep() {
+      if (currentStep < 4) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+
     function mostrarEndereco() {
       const entrega = document.getElementById('entrega').value;
       const campoEndereco = document.getElementById('campo-endereco');
-      campoEndereco.classList.toggle('hidden', entrega !== 'Entrega');
+      campoEndereco.style.display = entrega === 'Entrega' ? 'block' : 'none';
     }
 
     function enviarWhatsApp() {
@@ -200,11 +197,11 @@
       const endereco = document.getElementById('endereco').value;
 
       let mensagem = `Olá, estou interessado no *${modelo}*%0A`;
-      mensagem += `Quero pagar com *${pagamento}*%0A`;
+      mensagem += `Forma de pagamento: *${pagamento}*%0A`;
       mensagem += `Forma de recebimento: *${entrega}*%0A`;
 
-      if (entrega === 'Entrega') {
-        mensagem += `Endereço para entrega: *${endereco}*%0A`;
+      if (entrega === 'Entrega' && endereco) {
+        mensagem += `Endereço: *${endereco}*%0A`;
       }
 
       const numero = '5575983467307';
@@ -212,9 +209,5 @@
       window.open(url, '_blank');
     }
   </script>
-
-  <a href="https://wa.me/5575983467307" target="_blank">
-    <img class="whatsapp" src="https://img.icons8.com/color/96/000000/whatsapp--v1.png" alt="WhatsApp">
-  </a>
 </body>
 </html>
